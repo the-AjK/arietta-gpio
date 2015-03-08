@@ -1,0 +1,42 @@
+{
+
+    "name": "arietta-gpio",
+ 
+    "version": "0.0.1",
+  
+    "description": "Arietta sysfs GPIO wrapper for node.js based on node-native-gpio",
+  
+    "author": "Alberto Garbui <alberto.garbui@gmail.com>",
+
+    "license": "MIT",
+  
+    "keywords": ["arietta", "acme", "acmesystems", "gpio", "addon"],
+  
+    "main": "lib/index.js",
+
+    "gypfile": true,
+  
+    "scripts": {
+        "test": "make test",
+        "install": "make install"
+    },
+
+    "dependencies": {
+        "node-gyp": "0.12.1"
+    },
+
+    "devDependencies": {
+        "mocha": "1.14.0",
+        "should": "2.1.0"
+    },
+
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/the-AjK/arietta-gpio.git"
+    },
+  
+    "bugs": {
+        "url": "https://github.com/the-AjK/arietta-gpio/issues"
+    }
+
+}
