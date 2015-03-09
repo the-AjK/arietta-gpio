@@ -2,27 +2,38 @@
 
 **arietta-gpio** is a sysfs **G**eneral **P**urpose **I**nput **O**utput 
 wrapper for node.js. It gives you the ability to control GPIO devices in a 
-simple object orientated manner.
+simple object orientated manner for the Acmesystems Arietta board.
+Visit [AcmeSystems official site](http://www.acmesystems.it/arietta) for more informations about this hardware.
 
 ## Installation
 
-Install **arietta-gpio** with [npm(1)](http://npmjs.org):
+Install **arietta-gpio** with [npm](http://npmjs.org):
 
     $ npm install arietta-gpio
 
 ## Preview
 
-    var gpio = require('arietta-gpio');
+    var arietta = require('arietta-gpio');
 
-    var gpio22 = new gpio.GPIO(22);
-
-    gpio22
-        .direction(gpio.OUT)
-        .activeLow(gpio.LOW)
-          .value(gpio.HIGH)
-          .value(gpio.LOW)
-          .value(gpio.HIGH)
-          ;
+    var button = new arietta.GPIO(81);  //81 is the kernel ID for the onboard pushbutton
+	var led = new arietta.GPIO(64);		//64 is the kernel ID for pin 39 (PC0)
+	
+    led
+        .direction(arietta.GPIO.OUT)
+        .value(arietta.GPIO.LOW)
+        ;
+		  
+	button
+        .direction(arietta.GPIO.IN)
+        ;
+		
+	while(true){	
+		if(button.value() != arietta.GPIO.HIGH){
+			led.value(arietta.GPIO.HIGH);
+		}else{
+			led.value(arietta.GPIO.LOW);
+		}
+	}
 
 ## Documentation
 
@@ -53,7 +64,7 @@ Value constant for on state of a GPIO device.
 
 #### new GPIO(id)
 
-    var gpio36 = new GPIO(36);
+    var gpio23 = new GPIO(23);
 
 Creates a new instance of the GPIO class. Internally it will do a GPIO export
 if neccessary and open the GPIO's value and direction file descriptor to 
@@ -63,8 +74,8 @@ possible with plain JavaScript).
 
 #### gpio.direction([value])
 
-    if (gpio36.direction() === GPIO.OUT)
-        gpio36.direction(GPIO.IN);
+    if (gpio23.direction() === GPIO.OUT)
+        gpio23.direction(GPIO.IN);
 
 Returns the current GPIO direction mode if no arguments supplied else it will
 check if the first argument is a valid constant and then will set this as
@@ -72,8 +83,8 @@ GPIO direction.
 
 #### gpio.activeLow([value])
 
-    if (gpio36.activeLow() === GPIO.HIGH)
-        gpio36.activeLow(GPIO.LOW);
+    if (gpio23.activeLow() === GPIO.HIGH)
+        gpio23.activeLow(GPIO.LOW);
 
 Some circuits use a GPIO the other way around: This means the GPIO enables the
 circuit when it switches to `LOW`. In order to keep semantics of value you can
@@ -81,11 +92,11 @@ switch the active mode by using `activeLow` with either `LOW` or `HIGH`.
 
 #### gpio.value([value])
 
-    while (gpio36.value() != GPIO.HIGH)
+    while (gpio23.value() != GPIO.HIGH)
         // wait until GPIO value changes to HIGH
 
     // use GPIO as output device
-    gpio36.direction(GPIO.OUT).value(GPIO.LOW);
+    gpio23.direction(GPIO.OUT).value(GPIO.LOW);
 
 Returns the current GPIO value if no arguments supplied else it will check if
 the first argument is a valid constant and then will use this as GPIO value.
