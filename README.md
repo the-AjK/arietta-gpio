@@ -1,8 +1,8 @@
 # arietta-gpio
 
 **arietta-gpio** is a sysfs **G**eneral **P**urpose **I**nput **O**utput 
-wrapper for node.js. It gives you the ability to control GPIO devices in a 
-simple object orientated manner for the Acmesystems Arietta board.
+wrapper for node.js. It gives you the ability to control GPIO of the Acmesystems Arietta board in a 
+simple object orientated manner.
 Visit [AcmeSystems official site](http://www.acmesystems.it/arietta) for more informations about this hardware.
 
 ## Installation
