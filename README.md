@@ -104,6 +104,7 @@ the first argument is a valid constant and then will use this as GPIO value.
 ## License
 
 Copyright © 2013 Bodo Kaiser <i@bodokaiser.io>
+
 Copyright © 2015 Alberto Garbui <alberto.garbui@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
