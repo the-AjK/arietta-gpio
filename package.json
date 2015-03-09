@@ -2,7 +2,7 @@
 
     "name": "arietta-gpio",
  
-    "version": "0.0.1",
+    "version": "0.1.0",
   
     "description": "Arietta sysfs GPIO wrapper for node.js based on node-native-gpio",
   
